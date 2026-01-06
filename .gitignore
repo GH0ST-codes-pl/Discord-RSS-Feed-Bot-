@@ -1,0 +1,30 @@
+# Środowisko wirtualne
+venv/
+.venv/
+env/
+ENV/
+
+# Pliki konfiguracyjne z sekretami
+.env
+
+# Logi i historia
+bot.log
+posted.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
