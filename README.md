@@ -18,22 +18,41 @@ A robust and efficient Discord bot designed to automatically monitor RSS feeds a
 
 ## 🚀 Installation
 
-1. **Clone the repository:**
+### 📱 Android (Termux)
+1. **Update and install prerequisites:**
+   ```bash
+   pkg update && pkg upgrade
+   pkg install python git
+   ```
+2. **Clone and setup:**
    ```bash
    git clone https://github.com/GH0ST-codes-pl/Discord-RSS-Feed-Bot-.git
    cd "BOT DO RSS FEEDÓW"
+   python -m venv venv
+   source venv/bin/activate
+   pip install python-dotenv feedparser discord.py aiohttp
    ```
 
-2. **Create and activate a virtual environment:**
+### 💻 Windows
+1. **Install Python**: Download and install from [python.org](https://www.python.org/). (Make sure to check "Add Python to PATH").
+2. **Clone the repository**:
+   - Open Command Prompt or PowerShell.
+   - Run: `git clone https://github.com/GH0ST-codes-pl/Discord-RSS-Feed-Bot-.git`
+   - Run: `cd "BOT DO RSS FEEDÓW"`
+3. **Setup environment**:
+   ```powershell
+   python -m venv venv
+   .\venv\Scripts\activate
+   pip install python-dotenv feedparser discord.py aiohttp
+   ```
+
+### 🐧 Linux/Mac
+1. **Clone and setup:**
    ```bash
+   git clone https://github.com/GH0ST-codes-pl/Discord-RSS-Feed-Bot-.git
+   cd "BOT DO RSS FEEDÓW"
    python3 -m venv venv
-   source venv/bin/activate  # On Linux/Mac
-   # or
-   venv\Scripts\activate     # On Windows
-   ```
-
-3. **Install dependencies:**
-   ```bash
+   source venv/bin/activate
    pip install python-dotenv feedparser discord.py aiohttp
    ```
 
