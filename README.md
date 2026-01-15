@@ -1,137 +1,94 @@
-# Discord RSS Bot
+# Discord RSS Feed Bot 🚀
 
-Bot Discord do automatycznego publikowania wpisów z feedów RSS na kanałach Discord.
+A robust and efficient Discord bot designed to automatically monitor RSS feeds and publish new updates directly to your Discord channels. Built with Python using `discord.py` and `feedparser`.
 
-## Wymagania
+## ✨ Key Features
+- **Real-time Monitoring**: Automatically checks for new RSS feed entries every 60 seconds (configurable).
+- **Rich Embeds**: Posts updates using beautiful Discord Embeds including titles, descriptions, and links.
+- **Media Detection**: Intelligent detection of images and video content (YouTube, Vimeo) for enhanced visual presentation.
+- **Smart Tracking**: Remembers previously posted links in a `posted.json` file to prevent duplicate messages.
+- **Multi-Feed Support**: Support for multiple RSS feeds, each targetable to specific Discord channels.
+- **Auto-Cleanup**: Automatically manages the history of posted links to optimize performance.
+- **Async Implementation**: Fully asynchronous operations to ensure high responsiveness.
 
-- Python 3.8+
-- Konto Discord Bot (token)
-- ID kanału Discord, na który mają być wysyłane wiadomości
+## 📋 Prerequisites
+- Python 3.8 or higher
+- A Discord Bot Token (via [Discord Developer Portal](https://discord.com/developers/applications))
+- Discord Channel IDs where you want to receive updates
 
-## Instalacja
+## 🚀 Installation
 
-1. Sklonuj repozytorium:
-```bash
-git clone <URL_REPOZYTORIUM>
-cd "BOT DO RSS FEEDÓW"
+1. **Clone the repository:**
+   ```bash
+   git clone <YOUR_REPOSITORY_URL>
+   cd "BOT DO RSS FEEDÓW"
+   ```
+
+2. **Create and activate a virtual environment:**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Linux/Mac
+   # or
+   venv\Scripts\activate     # On Windows
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install python-dotenv feedparser discord.py aiohttp
+   ```
+
+## ⚙️ Configuration
+
+### 1. Environment Variables
+Create a `.env` file in the root directory and add your Discord bot token:
+```env
+DISCORD_BOT_TOKEN=your_token_here
 ```
 
-2. Utwórz i aktywuj środowisko wirtualne:
-```bash
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# lub
-venv\Scripts\activate  # Windows
-```
-
-3. Zainstaluj zależności:
-```bash
-pip install python-dotenv feedparser discord.py aiohttp
-```
-
-## Konfiguracja
-
-### 1. Token Discord
-
-Utwórz plik `.env` w głównym katalogu projektu:
-```bash
-DISCORD_BOT_TOKEN=twoj_token_tutaj
-```
-
-**Jak uzyskać token:**
-1. Przejdź do [Discord Developer Portal](https://discord.com/developers/applications)
-2. Utwórz nową aplikację lub wybierz istniejącą
-3. Przejdź do zakładki "Bot"
-4. Skopiuj token (jeśli nie widzisz, kliknij "Reset Token")
-
-### 2. Feedy RSS
-
-Edytuj plik `feeds.json`:
+### 2. Feed Configuration
+Edit the `feeds.json` file to include your RSS feeds and target channel IDs:
 ```json
 {
     "https://example.com/rss": 1234567890,
-    "https://another-feed.com/rss": 9876543210
+    "https://another-site.com/feed": 9876543210
 }
 ```
+*Note: The key is the RSS feed URL, and the value is the numerical Discord Channel ID.*
 
-**Format:**
-- Klucz: URL do feedu RSS
-- Wartość: ID kanału Discord (liczba)
-
-**Jak uzyskać ID kanału:**
-1. Włącz tryb dewelopera w Discord (Ustawienia → Zaawansowane → Tryb dewelopera)
-2. Kliknij prawym przyciskiem na kanał → "Kopiuj identyfikator"
-
-## Uruchomienie
+## 🏁 Running the Bot
 
 ### Linux/Mac:
+Using the provided start script:
 ```bash
+chmod +x start_bot.sh
 ./start_bot.sh
 ```
 
-### Ręcznie:
+### Manual execution:
 ```bash
+# Linux/Mac
 ./venv/bin/python bot.py
-```
 
-### Windows:
-```bash
+# Windows
 venv\Scripts\python bot.py
 ```
 
-## Funkcje
+## 📂 Project Structure
+- `bot.py`: Main application logic.
+- `.env`: (Private) Contains your sensitive bot token.
+- `feeds.json`: Configuration for your RSS feeds and target channels.
+- `posted.json`: (Auto-generated) Database of already posted links.
+- `bot.log`: (Auto-generated) Detailed logs of bot activity.
+- `start_bot.sh`: Convenience script for Unix-based systems.
 
-- ✅ Automatyczne sprawdzanie feedów RSS co 60 sekund
-- ✅ Publikowanie nowych wpisów na Discord
-- ✅ Wykrywanie obrazków i wideo (YouTube, Vimeo)
-- ✅ Formatowanie wiadomości jako embedy Discord
-- ✅ Pamiętanie opublikowanych postów (brak duplikatów)
-- ✅ Obsługa wielu feedów jednocześnie
-- ✅ Automatyczne czyszczenie starej historii
+## 🛠️ Advanced Configuration
+You can fine-tune the bot's behavior by modifying the constants in `bot.py`:
+- `CHECK_INTERVAL`: Frequency of RSS checks (default: 60s).
+- `MAX_DESCRIPTION_LENGTH`: Limit for message descriptions (default: 4096).
+- `MAX_POSTED_LINKS`: History size for tracking (default: 1000).
 
-## Struktura plików
+## 🛡️ License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-```
-.
-├── bot.py              # Główny plik bota
-├── .env                # Token Discord (NIE COMMITUJ!)
-├── feeds.json          # Lista feedów RSS
-├── posted.json         # Historia opublikowanych postów (auto-generowany)
-├── bot.log             # Logi działania bota (auto-generowany)
-├── start_bot.sh        # Skrypt startowy
-└── venv/               # Środowisko wirtualne
-```
-
-## Konfiguracja zaawansowana
-
-W pliku `bot.py` możesz dostosować:
-
-```python
-CHECK_INTERVAL = 60          # Interwał sprawdzania (sekundy)
-MAX_DESCRIPTION_LENGTH = 4096 # Maksymalna długość opisu
-MAX_POSTED_LINKS = 1000      # Ile linków zapamiętywać
-MAX_POSTS_PER_CYCLE = 0      # Limit postów na cykl (0 = bez limitu)
-```
-
-## Rozwiązywanie problemów
-
-### Bot nie startuje
-- Sprawdź czy token w `.env` jest poprawny
-- Upewnij się, że zainstalowałeś wszystkie zależności
-
-### Brak wiadomości na kanale
-- Sprawdź czy bot ma uprawnienia do pisania na kanale
-- Zweryfikuj ID kanału w `feeds.json`
-- Sprawdź logi w `bot.log`
-
-### Bot nie wykrywa nowych postów
-- Sprawdź czy feed RSS działa (otwórz w przeglądarce)
-- Usuń `posted.json` aby wymusić ponowne sprawdzenie
-
-## Licencja
-
-MIT License - możesz swobodnie używać i modyfikować.
-
-## Autor
-
-Stworzony z pomocą AI dla społeczności Discord.
+## 👤 Author
+Developed with the assistance of AI to empower the Discord community.
