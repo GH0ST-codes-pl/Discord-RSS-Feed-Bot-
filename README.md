@@ -20,7 +20,7 @@ A robust and efficient Discord bot designed to automatically monitor RSS feeds a
 
 1. **Clone the repository:**
    ```bash
-   git clone <YOUR_REPOSITORY_URL>
+   git clone https://github.com/GH0ST-codes-pl/Discord-RSS-Feed-Bot-.git
    cd "BOT DO RSS FEEDÓW"
    ```
 
