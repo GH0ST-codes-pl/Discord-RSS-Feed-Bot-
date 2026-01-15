@@ -87,6 +87,10 @@ You can fine-tune the bot's behavior by modifying the constants in `bot.py`:
 - `MAX_DESCRIPTION_LENGTH`: Limit for message descriptions (default: 4096).
 - `MAX_POSTED_LINKS`: History size for tracking (default: 1000).
 
+## 💖 Support
+If you find this bot helpful, you can support the developer via Tipply:
+[Tipply - @daily-shoty](https://tipply.pl/@daily-shoty)
+
 ## 🛡️ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
