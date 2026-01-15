@@ -95,4 +95,4 @@ If you find this bot helpful, you can support the developer via Tipply:
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 👤 Author
-Developed with the assistance of AI to empower the Discord community.
+Developed for the Discord community.
